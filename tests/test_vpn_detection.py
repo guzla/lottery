@@ -6,7 +6,7 @@ import os
 # Ensure the main script is in the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from pineapple_detector import PineappleDetector
+from src.pineapple_detector import PineappleDetector
 
 def test_vpn_configuration_detection_method_exists():
     """
