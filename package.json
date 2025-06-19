@@ -36,6 +36,7 @@
   },
   "vitest": {
     "environment": "jsdom",
-    "setupFiles": ["./vitest.setup.ts"]
+    "globals": true,
+    "setupFiles": ["./setupTests.js"]
   }
 }
