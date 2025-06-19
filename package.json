@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest",
-    "deploy:sepolia": "cd blockchain && npx hardhat run scripts/deploy.ts --network sepolia && cd .."
+    "deploy:sepolia": "cd blockchain && npx hardhat run scripts/deploy.ts --network sepolia && cd ..",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.6.1",
@@ -33,9 +34,5 @@
     "hardhat": "^2.13.0",
     "typescript": "^5.0.2",
     "vitest": "^3.2.4"
-  },
-  "vitest": {
-    "environment": "jsdom",
-    "setupFiles": ["./vitest.setup.ts"]
   }
 }
