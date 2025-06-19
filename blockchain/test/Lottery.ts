@@ -40,38 +40,25 @@ describe("Lottery", () => {
       .connect(player1)
       .enter({ value: ethers.utils.parseEther("0.009") });
 
-    await expect(enterLotteryTx).to.be.revertedWith("Min amount is 0.01 ether");
+    await expect(enterLotteryTx).to.be.revertedWith("Ticket costs 0.01 ether");
   });
 
-  // it("Should allow the owner to pick a winner", async () => {
-  //   await lottery.connect(player1).enter(payloadToEnterLottery);
-  //   await lottery.connect(player2).enter(payloadToEnterLottery);
-
-  //   const balanceBefore = await owner.getBalance();
-  //   const pickWinnerTx = await lottery.connect(owner).pickWinner();
-  //   const balanceAfter = await owner.getBalance();
-
-  //   await expect(pickWinnerTx).not.to.be.reverted;
-  //   expect(balanceAfter.lt(balanceBefore)).to.be.true;
-  // });
-
-  it("Should not allow non-owners to pick a winner", async () => {
+  it("Should not allow non-owners to start picking a winner", async () => {
     await lottery.connect(player1).enter(payloadToEnterLottery);
 
     const pickWinnerTx = lottery.connect(player1).startPickingWinner();
 
-    expect(pickWinnerTx).to.be.revertedWith("Ownable: caller is not the owner");
+    await expect(pickWinnerTx).to.be.revertedWith("Ownable: caller is not the owner");
   });
 
-  // it("Should reset the lottery after picking a winner", async () => {
-  //   await lottery.connect(player1).enter(payloadToEnterLottery);
-  //   await lottery.connect(player2).enter(payloadToEnterLottery);
-  //   await lottery.pickWinner();
+  it("Should get lottery balance", async () => {
+    await lottery.connect(player1).enter(payloadToEnterLottery);
+    const balance = await lottery.getBalance();
+    expect(balance).to.equal(payloadToEnterLottery.value);
+  });
 
-  //   const players = await lottery.getPlayers();
-  //   const lotteryId = await lottery.getLotteryId();
-
-  //   expect(players.length).to.equal(0);
-  //   expect(lotteryId).to.equal(1);
-  // });
+  it("Should track lottery ID", async () => {
+    const initialLotteryId = await lottery.getLotteryId();
+    expect(initialLotteryId).to.equal(1);
+  });
 });
