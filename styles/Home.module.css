@@ -1,3 +1,25 @@
-.wrapper {
-  padding-bottom: 30px;
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.historySection {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
 }
