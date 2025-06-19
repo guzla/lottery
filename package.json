@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "deploy:sepolia": "cd blockchain && npx hardhat run scripts/deploy.ts --network sepolia && cd ..",
-    "coverage": "vitest run --coverage"
+    "deploy:sepolia": "cd blockchain && npx hardhat run scripts/deploy.ts --network sepolia && cd .."
   },
   "dependencies": {
     "@chainlink/contracts": "^0.6.1",
@@ -29,11 +28,16 @@
     "@testing-library/react": "^16.3.0",
     "@types/node": "^18.15.3",
     "@types/react": "^18.0.28",
-    "@vitest/coverage-v8": "^1.0.4",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.5",
     "hardhat": "^2.13.0",
     "typescript": "^5.0.2",
-    "vitest": "^1.0.4"
+    "vitest": "^3.2.4"
+  },
+  "vitest": {
+    "environment": "jsdom",
+    "setupFiles": ["./setupTests.js"],
+    "include": ["**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    "exclude": ["node_modules", "dist", ".next"]
   }
 }
