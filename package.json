@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "deploy:sepolia": "cd blockchain && npx hardhat run scripts/deploy.ts --network sepolia && cd .."
   },
   "dependencies": {
@@ -36,6 +37,8 @@
   },
   "vitest": {
     "environment": "jsdom",
-    "setupFiles": ["./vitest.setup.ts"]
+    "setupFiles": [
+      "./__tests__/setup.ts"
+    ]
   }
 }
