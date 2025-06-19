@@ -1,16 +1,29 @@
-import Header from "../components/Header";
-import LotteryCard from "../components/LotteryCard";
-import Table from "../components/Table";
-import style from "../styles/Home.module.css";
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import Header from '../components/Header'
+import LotteryCard from '../components/LotteryCard'
+import LotteryHistory from '../components/LotteryHistory'
+import { LotteryProvider } from '../context/context'
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className={style.wrapper}>
-      <Header />
-      <LotteryCard />
-      <Table />
-    </div>
-  );
-};
+    <LotteryProvider>
+      <div className={styles.container}>
+        <Head>
+          <title>Lottery App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-export default Home;
+        <Header />
+        
+        <main className={styles.main}>
+          <LotteryCard />
+          
+          <div className={styles.historySection}>
+            <LotteryHistory />
+          </div>
+        </main>
+      </div>
+    </LotteryProvider>
+  )
+}
