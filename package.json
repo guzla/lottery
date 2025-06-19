@@ -36,8 +36,6 @@
   },
   "vitest": {
     "environment": "jsdom",
-    "setupFiles": ["./setupTests.js"],
-    "include": ["**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    "exclude": ["node_modules", "dist", ".next"]
+    "setupFiles": ["./setupTests.js"]
   }
 }
