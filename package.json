@@ -36,7 +36,6 @@
   },
   "vitest": {
     "environment": "jsdom",
-    "setupFiles": ["./setupTests.js"],
-    "include": ["**/*.test.{js,jsx,ts,tsx}"]
+    "setupFiles": ["./vitest.setup.ts"]
   }
 }
